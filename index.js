@@ -106,7 +106,7 @@ console.log(cumleKur("Münir", "BESYE"));
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle = "Ben iyi bir yazılımcı olacağım!";
-console.log(cumleKur(bircumle));
+//console.log(cumleKur(bircumle));
 /* kodlar buraya */
 
 //		Sayfanın en üstünde global olarak tanımlanmış `cumleler` adında bir dizi bulunmaktadır. Bu dizinin
@@ -195,18 +195,58 @@ let manav = meyveler.concat(sebzeler);
         (.toUpperCase ve .toLowerCase metotlarıı kullanabilirsiniz.)
 			4. elde edilen string döndürülecek
  */
-
+/*
 function emojileriDonustur(mesaj, emojis) {
+  /* 
+  function emojileriDonustur(mesaj, emojis) { 
+  for(let ifade in emojis){
+    let keyIfade = emojis[ifade];  
+    mesaj = mesaj.replaceAll(ifade.toLowerCase(), keyIfade);
+    mesaj = mesaj.replaceAll(ifade.toUpperCase(), keyIfade);
+  }
+
+  return mesaj;
+}
+  
+  
+
+
   let mesajDuzenli = mesaj.toLowerCase();
 
   for(let ifade in emojis){
     let keyIfade = emojis[ifade];  
     mesajDuzenli = mesajDuzenli.replaceAll(ifade, keyIfade);
-  }
+  } 
 
+  for(let i = 0; i < mesaj.length; i++){
+    if(mesajDuzenli[i].toUpperCase() == mesaj[i]){ 
+      mesajDuzenli = mesajDuzenli.substring(0, i) + mesaj[i] + mesajDuzenli.substring(i+1);
+    }
+  }
   return mesajDuzenli;
 }
 console.log(emojileriDonustur("Selam :) Nasılsın :D Bugünkü olay çok komikti :P ama sonra çok şaşırdık :o biraz da üzüldük :( ama yine de seviliyorsun <3", emojiler));
+*/
+function emojileriDonustur(mesajString, emojiler) {
+  //let mesajStringCase = mesajString.toLowerCase();
+  
+
+  for (const emojiSem in emojiler) {
+    const emoji = emojiler[emojiSem];
+    mesajString = mesajString.replaceAll (emojiSem.toUpperCase(), emoji);
+    mesajString = mesajString.replaceAll (emojiSem.toLowerCase(), emoji);
+  }
+
+  return mesajString;
+}
+
+const mesaj = "Merhaba :) nasılsın ? umarım her şey yolundadır ! :d";
+const yeniMesaj = emojileriDonustur(mesaj, {
+  ":)": "🙂",
+  ":d": "😁",
+});
+
+console.log(yeniMesaj);
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
   console.log("Kodlar çalışıyor");
